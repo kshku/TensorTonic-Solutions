@@ -18,7 +18,7 @@ def train_logistic_regression(X, y, lr=0.1, steps=1000):
         # p = _sigmoid(X @ w + b)
         p = _sigmoid(X.dot(w) + b)
         loss = (-1 / N) * np.sum(y * np.log2(p) + (1 - y) * np.log2(1 - p))
-        grad_w = np.sum(X.T * (p - y)) / N
+        grad_w = X.T.dot(p - y) / N
         grad_b = np.sum(p - y) / N
         w -= lr * grad_w
         b -= lr * grad_b
